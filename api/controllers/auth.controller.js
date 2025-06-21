@@ -26,6 +26,22 @@ res.status(201).json({message:"user created successfully"})
 
 }
 export const login =(req,res)=>{
+    const {username,password} = req.body;
+    try {
+
+        const user = await prisma.user.findUnique({
+            where:{username:username}
+        })
+        
+    } catch (error) {
+        console.log(first)
+        res.status(500).json({message:"failed to login"})
+    }
+
+    // / Check if user exists
+    // check if the password is correct
+    // generate cookie token and send to the user
+
 
 }
 export const logout =(req,res)=>{

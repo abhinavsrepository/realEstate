@@ -25,7 +25,7 @@ res.status(201).json({message:"user created successfully"})
 }
 
 }
-export const login =(req,res)=>{
+export  const login =async (req,res)=>{
     const {username,password} = req.body;
     try {
 

@@ -30,11 +30,18 @@ export  const login =async (req,res)=>{
     try {
 
         const user = await prisma.user.findUnique({
-            where:{username:username}
-        })
-        
+            where:{username}
+        });
+        if (!user) return res.status(401).json({message:"Invalid Credentials"});
+        const isPasswordValid =await bcrypt.compare(password,user.password)
+        // res.setHeader("Set-Cookie","test="+"myvalue").json("success")
+        // generate cookie parser token and send to the user
+        res.cookie("test2","myvalues2",{
+          httpOnly:true,
+        //   secure:true  
+        }).status(200).json("login successfull")
     } catch (error) {
-        console.log(first)
+        console.log(error)
         res.status(500).json({message:"failed to login"})
     }
 

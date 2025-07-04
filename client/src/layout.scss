@@ -1,0 +1,21 @@
+@import "./responsive.scss";
+
+.layout {
+    background-color: bisque;
+    height: 100vh;
+    max-width: 1366px;  // Added 'px' unit
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    @include sm {
+        background-color: red;
+    }
+    @include md {
+        background-color: red;
+    }
+    @include lg {
+        background-color: red;
+    }
+}
